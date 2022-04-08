@@ -4,6 +4,8 @@ const products= require('./data/products')
 
 const app=express();
 
+require('dotenv').config()
+
 const cors=require('cors')
 
 app.use(cors())
@@ -23,8 +25,9 @@ app.get('/products',(req,res)=>{
 })
 app.get('/products/:id',(req,res)=>{
     const product=products.find(p=>p.id==req.params.id);
-    res.json(product)
+    res.json(product);
 })
+
 
 app.listen(port, () => {
     console.log('Listening to port', port);
